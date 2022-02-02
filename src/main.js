@@ -13,6 +13,7 @@ let instance = null
 function render (props = {}) {
   const { container } = props
   router = new VueRouter({
+    // base: process.env.BASE_URL,
     base: window.__POWERED_BY_QIANKUN__ ? '/child1/' : '/',
     mode: 'history',
     routes
