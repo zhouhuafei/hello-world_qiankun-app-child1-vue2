@@ -14,7 +14,7 @@ function render (props = {}) {
   const { container } = props
   router = new VueRouter({
     // base: process.env.BASE_URL,
-    base: window.__POWERED_BY_QIANKUN__ ? '/child1/' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? '/child1' : '/',
     mode: 'history',
     routes
   })
@@ -31,12 +31,28 @@ if (!window.__POWERED_BY_QIANKUN__) {
   render()
 }
 
+function storeTest (props) {
+  props.onGlobalStateChange &&
+  props.onGlobalStateChange(
+    (value, prev) => console.log(`[onGlobalStateChange - ${props.name}]:`, value, prev),
+    true
+  )
+  props.setGlobalState &&
+  props.setGlobalState({
+    ignore: props.name,
+    user: {
+      name: props.name
+    }
+  })
+}
+
 export async function bootstrap () {
   console.log('[vue] vue app bootstraped')
 }
 
 export async function mount (props) {
   console.log('[vue] props from main framework', props)
+  storeTest(props)
   render(props)
 }
 
