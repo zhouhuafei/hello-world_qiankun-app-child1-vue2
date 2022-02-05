@@ -11,7 +11,8 @@ let router = null
 let instance = null
 
 function render (props = {}) {
-  const { container } = props
+  const { container, mainStore } = props
+  console.log('child1 mainStore：', mainStore)
   router = new VueRouter({
     // base: process.env.BASE_URL,
     base: window.__POWERED_BY_QIANKUN__ ? '/child1' : '/',
