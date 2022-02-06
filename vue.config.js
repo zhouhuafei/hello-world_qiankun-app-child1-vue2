@@ -1,5 +1,7 @@
 const { name } = require('./package')
+const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
+  publicPath: isProd ? '/child1nginx' : '/',
   lintOnSave: false,
   devServer: {
     port: 7071,
