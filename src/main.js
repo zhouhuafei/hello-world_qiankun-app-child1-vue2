@@ -15,7 +15,7 @@ function render (props = {}) {
   console.log('child1 mainStore：', mainStore)
   router = new VueRouter({
     // base: process.env.BASE_URL,
-    base: window.__POWERED_BY_QIANKUN__ ? '/child1/' : '/',
+    base: window.__POWERED_BY_QIANKUN__ ? '/child1' : '/',
     mode: 'history',
     routes
   })
