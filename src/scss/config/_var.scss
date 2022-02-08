@@ -1,0 +1,39 @@
+// 基础颜色
+$white: #ffffff !default;
+$whiteSmoke: #f2f2f2 !default;
+
+// 行为颜色
+$success: #04be02 !default;
+$warning: #ff9619 !default;
+$danger: #ff5638 !default;
+$info: #1989fa !default;
+
+// 品牌颜色
+$brandColor: #FF346D !default;
+
+// 文字基础
+$fontSize: 14 !default;
+$lineHeight: 1 !default;
+
+// 文字颜色
+$textColor: #272636 !default;
+$textColorSecond: #96989c !default;
+
+// 背景颜色
+$backgroundColor: #f8f8f8 !default;
+$backgroundColorModule: $white !default;
+$backgroundColorDisabled: $textColorSecond !default;
+$backgroundColorClient: #ededed !default;
+
+// 边框颜色
+$borderColor: #e2e2e2 !default;
+$borderRadius: 8;
+
+// 间隙
+$gap: 10 !default;
+
+// 层级
+$zIndexFixed: 50 !default;
+$zIndexFixedAdd1: $zIndexFixed + 1 !default;
+$zIndexFixedRemove1: $zIndexFixed - 1 !default;
+$zIndexMask: 99 !default;

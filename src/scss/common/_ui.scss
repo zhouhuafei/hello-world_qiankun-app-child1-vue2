@@ -1,0 +1,179 @@
+@import "../config";
+
+// 首次应用在确认框 - 让关键字段高亮 - 起到警示作用
+.ui-color-danger {
+  color: $--color-danger;
+}
+
+// 把提示的层级拉到最高防止被遮挡 - 以前遇到过被遮挡的情况
+.ui-message-custom-class {
+  z-index: 99999999 !important;
+}
+
+// 列表页 - 搜索区域 - 通用样式
+.ui-search {
+  padding: 10px 0;
+  border-radius: $--border-radius-base;
+  background: #f5f7fc;
+  $w: 235;
+
+  .el-form-item--small {
+    margin-bottom: 10px;
+  }
+
+  .el-form-item__content {
+    width: $w + px;
+  }
+
+  .el-date-editor, .el-select {
+    width: 100%;
+  }
+
+  .ui-search__body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ui-search__foot {
+    border-top: 1px dashed #ddd;
+
+    .ui-search__foot-search {
+      @extend .df-aic-jcfe;
+      padding: 10px 10px 0 10px;
+      flex-wrap: wrap;
+    }
+
+    .ui-search__foot-post {
+      @extend .df-aic-jcsb;
+      padding: 10px 10px 0 0;
+      flex-wrap: wrap;
+    }
+
+    .el-form-item--small {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// 列表页 - 导出时间 - 让导出时间弹窗中的日期输入框不可输入 - 让导出时间弹窗中的清空按钮失去踪影
+.ui-el-date-picker-export-handle-popper {
+  .el-picker-panel__footer .el-button--text {
+    display: none;
+  }
+
+  .el-date-range-picker__time-header {
+    user-select: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      width: 25%;
+      height: 100%;
+    }
+
+    &::before {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 25%;
+      height: 100%;
+    }
+  }
+}
+
+// 列表页 - 表格操作 - 批量删除、全部删除的容器
+.ui-table-opt {
+  @extend .df-aic-jcsb;
+  flex-wrap: wrap;
+  padding: 13px 10px 0;
+
+  .__select-desc {
+    font-size: 12px;
+
+    .__text {
+      color: $--color-text-secondary;
+    }
+
+    .__num {
+    }
+  }
+}
+
+// 列表页 - 分页的容器
+.ui-pagination-wrap {
+  text-align: right;
+  padding-top: 15px;
+  padding-right: 5px;
+  background: white;
+}
+
+// 详情页 - 取消、保存的容器
+.ui-edit-btn-wrapper {
+  padding: 40px 0 20px;
+  text-align: center;
+
+  .el-button {
+    padding: 14px 40px;
+    margin-right: 20px;
+    margin-left: 0;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+// 详情页 - 在el-table中使el-form-item的校验错误可以正常展示
+.ui-reset--el-table-cell-visible .cell {
+  // overflow: visible; // 会导致表格的单行省略号无效。固使用padding-bottom来实现。
+  padding-bottom: 18px;
+}
+
+// tree-view
+.tree-view-item {
+  .tree-view-item-key {
+    color: #262626;
+  }
+
+  .tree-view-item-value {
+    &.tree-view-item-value-string {
+      color: #c82623;
+    }
+
+    &.tree-view-item-value-number {
+      color: #3f28d7;
+    }
+
+    &.tree-view-item-value-boolean {
+      color: #bf46aa;
+    }
+
+    &.tree-view-item-value-null {
+      color: #bf46aa;
+    }
+
+    &.tree-view-item-value-function {
+      color: #bf46aa;
+    }
+  }
+}
+
+.ui-export-time {
+  position: relative;
+
+  .ui-export-time__hint {
+    position: absolute;
+    left: -68px;
+    top: -24px;
+    color: $--color-text-secondary;
+    font-size: 12px;
+    text-align: justify;
+    white-space: nowrap;
+  }
+}

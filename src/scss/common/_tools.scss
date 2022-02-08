@@ -1,0 +1,75 @@
+@import "../config";
+
+// 边距工具类
+$direction: (t: top, r: right, b: bottom, l: left);
+$spacers: 0, 5, 10, 15, 20, 25, 30, 100;
+@include spacing-gen($spacers, $direction);
+
+// 宽度工具类
+$widthList: 100;
+@include width-gen($widthList);
+
+// flex相关
+.df-aic {
+  display: flex;
+  align-items: center;
+}
+
+.df-aic-jcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.df-aic-jcfe {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.df-aic-jcsb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.df-jcsb {
+  display: flex;
+  justify-content: space-between;
+}
+
+// 定位相关
+.por {
+  position: relative;
+}
+
+.poa {
+  position: absolute;
+}
+
+// 对齐相关
+.tac {
+  text-align: center;
+}
+
+.tar {
+  text-align: right;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+.dib {
+  display: inline-block;
+}
+
+// 文字相关
+.fsize12 {
+  font-size: 12px;
+}
+
+// 边框相关
+.bt-n {
+  border-top: none !important;
+}

@@ -1,32 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Child1 - Home</router-link> |
-      <router-link to="/about">Child1 - About</router-link>
-    </div>
+    <el-card style="margin: 10px;font-size: 12px;">
+      <div style="text-align: left;" slot="header">子应用child1的跳转入口</div>
+      <el-button icon="el-icon-link" @click="$router.push({name:'Home'})">child1 - Home</el-button>
+      <el-button icon="el-icon-link" @click="$router.push({name:'About'})">child1 - About</el-button>
+    </el-card>
+
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  @import "@/scss/common";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
-}
 </style>

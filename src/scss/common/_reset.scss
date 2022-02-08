@@ -1,0 +1,31 @@
+@import "../config";
+
+a {
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* 这里是按照微信小程序的特性进行重置 */
+canvas {
+  display: block;
+}
+
+image, img, video, audio {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.iconfont {
+  line-height: 1;
+  font-size: inherit;
+  display: inline-block;
+  vertical-align: middle;
+}

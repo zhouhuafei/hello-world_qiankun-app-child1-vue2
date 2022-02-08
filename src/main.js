@@ -4,6 +4,9 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import routes from './router'
 import store from './store'
+import ElementUI from 'element-ui'
+
+Vue.use(ElementUI, { size: 'small' })
 
 Vue.config.productionTip = false
 

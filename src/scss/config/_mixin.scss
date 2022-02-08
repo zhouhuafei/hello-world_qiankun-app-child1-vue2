@@ -1,0 +1,138 @@
+@import "./var";
+
+// 单行省略号
+@mixin ellipsis1() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行省略号
+@mixin ellipsis2($lineClamp: 1, $lineHeight: 18) {
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lineClamp;
+  line-height: px2upx($lineHeight);
+  max-height: px2upx($lineHeight * $lineClamp);
+}
+
+// hairline
+@mixin hairline-common($borderColor:$borderColor) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    transform: scale(0.5);
+    border: 0 solid $borderColor;
+    box-sizing: border-box;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
+
+@mixin hairline($borderColor:$borderColor) {
+  @include hairline-common($borderColor);
+  &::after {
+    border-width: 1px;
+  }
+}
+
+@mixin hairline--top($borderColor:$borderColor) {
+  @include hairline-common($borderColor);
+  &::after {
+    border-top-width: 1px;
+  }
+}
+
+@mixin hairline--bottom($borderColor:$borderColor) {
+  @include hairline-common($borderColor);
+  &::after {
+    border-bottom-width: 1px;
+  }
+}
+
+@mixin hairline--left($borderColor:$borderColor) {
+  @include hairline-common($borderColor);
+  &::after {
+    border-left-width: 1px;
+  }
+}
+
+@mixin hairline--right($borderColor:$borderColor) {
+  @include hairline-common($borderColor);
+  &::after {
+    border-right-width: 1px;
+  }
+}
+
+@mixin hairline--top-bottom($borderColor:$borderColor) {
+  @include hairline-common($borderColor);
+  &::after {
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+  }
+}
+
+// 边距、间距工具类生成
+@mixin spacing-gen($spacers, $direction) {
+  @each $prop, $abbrev in (margin: m, padding: p) {
+    // 消除间距
+    // .p0
+    // .m0
+    .#{$abbrev}0 {
+      #{$prop}: 0 !important;
+    }
+
+    @each $size in $spacers {
+      // 不带方向的间距
+      // .p10
+      // .m10
+      .#{$abbrev}#{$size} {
+        #{$prop}: $size + px !important;
+      }
+
+      @each $dir-abbrev, $dir in $direction {
+        // 消除带方向的间距
+        // .pt0、.pr0、.pb0、.pl0
+        // .mt0、.mr0、.mb0、.ml0
+        .#{$abbrev}#{$dir-abbrev}0 {
+          #{$prop}-#{$dir}: 0 !important;
+        }
+
+        // 带方向的间距
+        // .pt10、.pr10、.pb10、.pl10
+        // .mt10、.mr10、.mb10、.ml10
+        .#{$abbrev}#{$dir-abbrev}#{$size} {
+          #{$prop}-#{$dir}: $size + px !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin width-gen($size) {
+  @each $s in $size {
+    .w#{$s} {
+      width: $s + px !important;
+    }
+  }
+}
+
+// 清除浮动
+@mixin clear-fix() {
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+}

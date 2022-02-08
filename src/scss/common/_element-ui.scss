@@ -1,0 +1,12 @@
+@import "../config";
+@import "~element-ui/packages/theme-chalk/src/index";
+
+// 让多选按钮与顶端全选按钮对齐
+.el-table-column--selection .cell {
+  padding-left: 10px;
+}
+
+// 修复账号自动填充时右侧限制长度的样式问题
+.el-input .el-input__count .el-input__count-inner {
+  background: transparent;
+}
