@@ -32,19 +32,17 @@ if (!window.__POWERED_BY_QIANKUN__) {
   render()
 }
 
+// 微前端 - 主子应用通信
 function storeTest (props) {
-  props.onGlobalStateChange &&
-  props.onGlobalStateChange(
-    (value, prev) => console.log(`[onGlobalStateChange - ${props.name}]:`, value, prev),
-    true
-  )
-  props.setGlobalState &&
-  props.setGlobalState({
-    ignore: props.name,
-    user: {
-      name: props.name
-    }
-  })
+  if (props.onGlobalStateChange) {
+    props.onGlobalStateChange((value, prev) => {
+      console.log(`在子应用${props.name}中打印变更前的状态：`, prev)
+      console.log(`在子应用${props.name}中打印变更后的状态：`, value)
+    }, true) // true表示会立即执行一次回调
+  }
+  if (props.setGlobalState) {
+    props.setGlobalState({ a: 111, b: 222 })
+  }
 }
 
 export async function bootstrap () {
