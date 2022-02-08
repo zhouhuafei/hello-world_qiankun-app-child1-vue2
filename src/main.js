@@ -11,8 +11,7 @@ let router = null
 let instance = null
 
 function render (props = {}) {
-  const { container, mainStore } = props
-  console.log('child1 mainStore：', mainStore)
+  const { container } = props
   router = new VueRouter({
     // base: process.env.BASE_URL,
     base: window.__POWERED_BY_QIANKUN__ ? '/child1' : '/',
@@ -34,6 +33,7 @@ if (!window.__POWERED_BY_QIANKUN__) {
 
 // 微前端 - 主子应用通信 - 加if是因为qiankun的v3版本会移除这个api
 function storeTest (props) {
+  console.log(`主应用通过props传给子应用${props.name}的mainStore：`, props.mainStore)
   if (props.onGlobalStateChange) {
     props.onGlobalStateChange((value, prev) => {
       console.log(`在子应用${props.name}中打印变更前的状态：`, prev)
@@ -42,6 +42,12 @@ function storeTest (props) {
   }
   if (props.setGlobalState) {
     props.setGlobalState({ a: 111, b: 222 })
+  }
+  if (props.onGlobalStateChange) {
+    Vue.prototype.$onGlobalStateChange = props.onGlobalStateChange
+  }
+  if (props.setGlobalState) {
+    Vue.prototype.$setGlobalState = props.setGlobalState
   }
 }
 
